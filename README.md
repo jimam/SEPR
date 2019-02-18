@@ -1,11 +1,9 @@
 # SEPR
 
-Project repo for the Depressed Discipline SEPR Zombies project.
+Project repo for the Depressed Discipline SEPR Zombies project (assessment 3).
 
-`/Dead-Last` contains source files for the assessment 3 project.
+`/src` contains source files for the assessment 3 project.
 
 `/docs` contains the page files for the website.
 
-`/src` contains source files for the assessment 2 project.
-
-`/test` contains test files.
+`src/core/src/com/deadlast/test/com/deadlast/testing/` contains test files.

@@ -10,7 +10,6 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
         
 
     }
@@ -22,7 +21,7 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = "depressed-discipline"
+        appName = "deadlast"
         gdxVersion = '1.9.8'
         roboVMVersion = '2.3.5'
         box2DLightsVersion = '1.4'
@@ -41,6 +40,11 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java"
+	
+    compileJava {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 
     dependencies {
@@ -48,58 +52,46 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        
-    }
-}
-
-project(":html") {
-    apply plugin: "gwt"
-    apply plugin: "war"
-
-
-    dependencies {
-        compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
-        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
-        compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
-        compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
+        compile "de.tomgrill.gdxfacebook:gdx-facebook-desktop:1.4.1"
+        compile "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:1.2.5"
         
     }
 }
 
 project(":core") {
     apply plugin: "java"
-
-    sourceSets.test.java.srcDirs = ["/test"]
+	
+    compileJava {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
         compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+        compile "com.badlogicgames.ashley:ashley:$ashleyVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-
-        // Test dependencies
-        testCompile "junit:junit:4.+"
-        testCompile "org.mockito:mockito-core:2.+"
-
-        testCompile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
-        testCompile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        testCompile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        testCompile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        testCompile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-
-        compile "junit:junit:4.+"
-        compile "org.mockito:mockito-core:2.+"
-
-        compile "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+        compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+        compile "com.underwaterapps.overlap2druntime:overlap2d-runtime-libgdx:0.1.0"
+        compile "com.kotcrab.vis:vis-ui:1.3.0"
+        compile "net.dermetfan.libgdx-utils:libgdx-utils:0.13.4"
+        compile "net.dermetfan.libgdx-utils:libgdx-utils-box2d:0.13.4"
+        compile "de.tomgrill.gdxfacebook:gdx-facebook-core:1.4.1"
+        compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.2.5"
+        compile "com.github.czyzby:gdx-kiwi:1.9.1.9.6"
+        compile "com.github.czyzby:gdx-lml:1.9.1.9.6"
+        compile "com.github.czyzby:gdx-lml-vis:1.9.1.9.6"
+        compile "org.junit.jupiter:junit-jupiter-engine:5.1.1"
+        compile "org.junit.jupiter:junit-jupiter-api:5.1.1"
+        
     }
 }
 
